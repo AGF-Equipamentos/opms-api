@@ -5,4 +5,5 @@ export default interface ICreateOPDTO {
   op_number: string;
   part_number: string;
   description: string;
+  observation: string;
 }

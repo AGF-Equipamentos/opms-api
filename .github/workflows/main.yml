@@ -18,10 +18,10 @@ jobs:
 
     - name: install dependencies
       run: yarn
-    
+
     - name: Run build
       run: yarn build
-      
+
     - name: Copy project to AGF
       uses: appleboy/scp-action@master
       with:
@@ -30,7 +30,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         password: ${{ secrets.SSH_PASS }}
         source: ".,!node_modules"
-        target: "~/app/opms-backend"
+        target: "~/app/opms-api"
 
     - name: Run production scripts
       uses: appleboy/ssh-action@master
@@ -40,7 +40,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         password: ${{ secrets.SSH_PASS }}
         script: |
-          cd ~/app/opms-backend
+          cd ~/app/opms-api
           yarn
           yarn typeorm migration:run
-          pm2 restart opms-backend
+          pm2 restart opms-api
