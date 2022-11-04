@@ -17,6 +17,7 @@ class OPsRepository implements IOPsRepository {
     op_number,
     part_number,
     description,
+    observation,
   }: ICreateOPDTO): Promise<OP> {
     const op = this.ormRepository.create({
       user_id,
@@ -25,6 +26,7 @@ class OPsRepository implements IOPsRepository {
       op_number,
       part_number,
       description,
+      observation,
     });
 
     await this.ormRepository.save(op);

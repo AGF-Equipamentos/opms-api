@@ -36,6 +36,9 @@ class OP {
   @Column()
   description: string;
 
+  @Column()
+  observation: string;
+
   @CreateDateColumn()
   created_at: Date;
 

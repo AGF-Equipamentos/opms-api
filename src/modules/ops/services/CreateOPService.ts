@@ -77,6 +77,7 @@ class CreateOPService {
       department: user.department,
       part_number: opDetails.data[0].PRODUTO,
       description: opDetails.data[0].DESCRICAO,
+      observation: opDetails.data[0].OBS,
     });
 
     const responseCommits = await axios({
